@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         float moveSpeedMultiplier = Input.GetKey(KeyCode.LeftShift) ? runSpeedMultiplier : 1f;
 
         float moveInput = Input.GetAxisRaw("Horizontal");
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed * moveSpeedMultiplier, rb.linearVelocity.y);
+        rb.velocity = new Vector2(moveInput * moveSpeed * moveSpeedMultiplier, rb.velocity.y);
 
         // 设置奔跑动画播放状态
         animator.SetBool("isRunning", Mathf.Abs(moveInput) > 0 && Input.GetKey(KeyCode.LeftShift));
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     }
     void Jump()
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         isGrounded = false;
     }
 }
